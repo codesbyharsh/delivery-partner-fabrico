@@ -50,19 +50,20 @@ const orderSchema = new mongoose.Schema({
   deliveredAt: Date,
 
   // 🔥 Return & Refund lifecycle
-  returnStatus: {
-    type: String,
-    enum: [
-      'Return Requested',
-      'Return Approved / Pickup Scheduled',
-      'Return Picked Up',
-      'Return in Transit',
-      'Return Completed',
-      'Refund Initiated',
-      'Refund Completed'
-    ],
-    default: null
-  },
+returnStatus: {
+  type: String,
+  enum: [
+    'Return Requested',
+    'Return Approved / Pickup Scheduled',
+    'Return Picked Up',
+    'Return in Transit',
+    'Return Completed',
+    'Refund Initiated',
+    'Refund Completed',
+    'N/A',   // included in enum
+  ],
+  default: 'N/A'  // ✅ safe default
+},
   returnTimeline: {
     requestedAt: Date,
     approvedAt: Date,
