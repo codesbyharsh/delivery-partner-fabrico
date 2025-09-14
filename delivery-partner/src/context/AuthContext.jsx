@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const AuthContext = createContext();
-const API = "http://localhost:5000/api/rider"; 
+const API = import.meta.env.VITE_API_URL
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const res = await axios.post(`${API}/login`, { username, password });
+      const res = await axios.post(`${API}/rider/login`, { username, password });
       if (res.data && res.data._id) {
         const rider = {
           id: res.data._id,

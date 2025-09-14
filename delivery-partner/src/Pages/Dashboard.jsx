@@ -10,7 +10,8 @@ import BucketList from "./BucketList";
 import Complete from "./Complete";
 import Return from "./Return";
 
-const API = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL;
+
 
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();

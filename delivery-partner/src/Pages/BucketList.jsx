@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Complete from "./Complete"; // ✅ import Completed section
 
-const API = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL;
+
 
 function getCurrentRiderFromStorage() {
   const keys = ["rider", "currentRider", "currentUser", "user", "authUser"];
