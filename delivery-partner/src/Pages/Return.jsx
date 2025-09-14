@@ -17,8 +17,10 @@ export default function Return() {
           ? res.data
           : res.data.data || res.data.orders || [];
 
-        // ✅ Filter only orders with any return activity
-        const returnOrders = data.filter((o) => o.returnStatus);
+// ✅ Only include orders with a real return status (not "N/A" or null)
+const returnOrders = data.filter(
+  (o) => o.returnStatus && o.returnStatus !== "N/A" && o.returnStatus !==null 
+);
 
         setOrders(returnOrders);
       } catch (err) {
